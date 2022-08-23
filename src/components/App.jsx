@@ -8,6 +8,8 @@ import { GlobalStyle } from './GlobalStyle';
 import { Title } from './Section/SectionTitle.styled';
 import { SectionBox } from './Section/SectionTitle.styled';
 
+const LS_KEY = 'Phone-contacts';
+
 export class App extends Component {
   state = {
     contacts: [
@@ -39,8 +41,8 @@ export class App extends Component {
       contacts: [newContact, ...contacts],
     }));
     Notiflix.Notify.success(`Contact added`);
-    console.log(newContact);
-    console.log(this.state.contacts);
+    // console.log(newContact);
+    // console.log(this.state.contacts);
   };
 
   deleteContact = contactId => {
@@ -53,6 +55,17 @@ export class App extends Component {
   filterChange = e => {
     this.setState({ filter: e.currentTarget.value });
   };
+  componentDidMount() {
+    if (localStorage.getItem(LS_KEY)) {
+      this.setState({ contacts: JSON.parse(localStorage.getItem(LS_KEY)) });
+      console.log(this.state.contacts);
+    }
+  }
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem(LS_KEY, JSON.stringify(this.state.contacts));
+    }
+  }
 
   render() {
     const { contacts, filter } = this.state;
