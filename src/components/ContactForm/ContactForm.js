@@ -53,7 +53,7 @@ export class ContactForm extends Component {
                 placeholder="Enter contact name"
               />
               <ErrorMessage name="name">
-                {() => Notiflix.Notify.failure('Required field')}
+                {() => Notiflix.Notify.failure('Name is required field')}
               </ErrorMessage>
             </Label>
             <Label>
@@ -66,7 +66,7 @@ export class ContactForm extends Component {
                 placeholder="Enter contact phone"
               />
               <ErrorMessage name="number">
-                {() => Notiflix.Notify.failure('Required field')}
+                {() => Notiflix.Notify.failure('Number is required field')}
               </ErrorMessage>
             </Label>
             <ContactFormBtn type="submit">Add contact</ContactFormBtn>
