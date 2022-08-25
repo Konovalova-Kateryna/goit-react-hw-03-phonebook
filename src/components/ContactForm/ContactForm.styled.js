@@ -1,3 +1,4 @@
+import { Form, Field } from 'formik';
 import styled from 'styled-components';
 
 export const ContactFormStyle = styled.div`
@@ -6,7 +7,7 @@ export const ContactFormStyle = styled.div`
   width: 100%;
   margin-bottom: 30px;
 `;
-export const Input = styled.input`
+export const Input = styled(Field)`
   border-radius: 4px;
   padding: 5px;
   border: 2px solid rgba(33, 33, 33, 0.2);
@@ -19,7 +20,7 @@ export const Input = styled.input`
   }
 `;
 
-export const Form = styled.form`
+export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 20px;

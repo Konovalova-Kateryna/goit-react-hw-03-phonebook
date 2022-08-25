@@ -41,8 +41,8 @@ export class App extends Component {
       contacts: [newContact, ...contacts],
     }));
     Notiflix.Notify.success(`Contact added`);
-    // console.log(newContact);
-    // console.log(this.state.contacts);
+    console.log(newContact);
+    console.log(this.state);
   };
 
   deleteContact = contactId => {
@@ -58,7 +58,6 @@ export class App extends Component {
   componentDidMount() {
     if (localStorage.getItem(LS_KEY)) {
       this.setState({ contacts: JSON.parse(localStorage.getItem(LS_KEY)) });
-      console.log(this.state.contacts);
     }
   }
   componentDidUpdate(_, prevState) {
@@ -77,7 +76,7 @@ export class App extends Component {
 
     return (
       <SectionBox>
-        <ContactForm onSubmit={this.addContact} />
+        <ContactForm onNewSubmit={this.addContact} />
         <Title>Contacts</Title>
         <Filter value={filter} onFilterChange={this.filterChange} />
         <ContactList
